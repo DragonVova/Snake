@@ -13,3 +13,13 @@ sCoord Snake::getGoord()
     return mSnakeCoord;
 }
 
+void Snake::setMove(eDirection move)
+{
+    mDirection = move;
+}
+
+void Snake::move(sCoord coord)
+{
+    mSnakeCoord.X = coord.X;
+    mSnakeCoord.Y = coord.Y;
+}

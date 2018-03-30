@@ -9,7 +9,9 @@ class Map
 public:
     Map();
     void drawMap();
-    void isMove();
+    void clearCoord(const sCoord &coord);
+    bool isMove(const sCoord& coord);
+    void userInput();
     void setcur(int x, int y);
     bool getGameOver();
 private:

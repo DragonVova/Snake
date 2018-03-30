@@ -1,6 +1,7 @@
 #include <iostream>
 #include "helper.h"
 #include "map.h"
+#include <conio.h>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ int main()
     {
         system("cls");
         obj_Map.drawMap();
+        obj_Map.userInput();
     }
     return 0;
 }
