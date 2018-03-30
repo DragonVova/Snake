@@ -7,3 +7,9 @@ Snake::Snake():
 {
 
 }
+
+sCoord Snake::getGoord()
+{
+    return mSnakeCoord;
+}
+

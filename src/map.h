@@ -1,6 +1,8 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "snake.h"
+#include "fruit.h"
 #include "helper.h"
 class Map
 {
@@ -11,7 +13,9 @@ public:
     void setcur(int x, int y);
     bool getGameOver();
 private:
-    int MapArray[nConstants::FIELDHEIGHT][nConstants::FIELDHEIGHT];
+    Snake mSnake;
+    Fruit mFood;
+    int MapArray[nConstants::FIELDHEIGHT][nConstants::FIELDWIDTH];
     int mScore;
     bool GameOver;
 };

@@ -7,6 +7,8 @@ class Snake
 {
 public:
     Snake();
+    sCoord getGoord();
+    void move(sCoord coord);
 private:
     eDirection mDirection;
     sCoord mSnakeCoord;

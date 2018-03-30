@@ -12,6 +12,14 @@ namespace nConstants
    const int DEFOODCOORD_Y = 5;
 }
 
+namespace nObjects
+{
+   const int SNAKEHEAD = 2;
+   const int OBSTACLE = 1;
+   const int CLEAR = 0;
+   const int FOOD = 3;
+}
+
 struct sCoord
 {
     int X;
