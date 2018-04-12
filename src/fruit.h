@@ -7,9 +7,10 @@ class Fruit
 {
 public:
     Fruit();
+    sCoord getCoord() const;
+    void setCoord();
 private:
-    eDirection sDirection;
-    sCoord sFoodCoord;
+    sCoord mCoord;
 };
 
 #endif // FRUIT_H

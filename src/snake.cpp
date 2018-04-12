@@ -18,6 +18,11 @@ void Snake::setMove(eDirection move)
     mDirection = move;
 }
 
+eDirection Snake::getDirection() const
+{
+    return mDirection;
+}
+
 void Snake::move(sCoord coord)
 {
     mSnakeCoord.X = coord.X;

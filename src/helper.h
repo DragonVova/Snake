@@ -28,6 +28,11 @@ struct sCoord
     {
 
     }
+
+    bool operator==(const sCoord& coord) const
+    {
+        return (X == coord.X) && (Y == coord.Y);
+    }
 };
 
 

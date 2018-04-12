@@ -15,6 +15,8 @@ public:
     void setcur(int x, int y);
     bool getGameOver();
 private:
+    void sLogic();
+
     Snake mSnake;
     Fruit mFood;
     int MapArray[nConstants::FIELDHEIGHT][nConstants::FIELDWIDTH];

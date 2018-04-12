@@ -4,6 +4,7 @@
 #include "helper.h"
 #include <conio.h>
 
+
 Map::Map():
     GameOver(false)
   , mScore(0)
@@ -59,34 +60,38 @@ void Map::clearCoord(const sCoord& coord)
 bool Map::isMove(const sCoord &coord)
 {
     bool isMove = false;
-    if(MapArray[coord.Y][coord.X] == nObjects::CLEAR)
+    if(nObjects::OBSTACLE != MapArray[coord.Y][coord.X])
     {
         isMove = true;
+        if(MapArray[coord.Y][coord.X] == nObjects::FOOD)
+        {
+            sLogic();
+        }
         MapArray[coord.Y][coord.X] = nObjects::SNAKEHEAD;
+        sLogic();
     }
     return isMove;
 }
 
 void Map::userInput()
 {
-    eDirection mDirection = eDirection::Stop;
     sCoord mCoord = mSnake.getGoord();
 
     if (_kbhit())
     {
         switch (_getch())
         {
-        case nButtons::DOWN : mDirection = Down; break;
-        case nButtons::LEFT : mDirection = Left; break;
-        case nButtons::RIGHT : mDirection = Right; break;
-        case nButtons::UP : mDirection = Up; break;
+        case nButtons::DOWN : mSnake.setMove(Down); break;
+        case nButtons::LEFT : mSnake.setMove(Left); break;
+        case nButtons::RIGHT : mSnake.setMove(Right); break;
+        case nButtons::UP : mSnake.setMove(Up); break;
         default: break;
         }
     }
 
-    if (Stop != mDirection)
+    if (Stop != mSnake.getDirection())
     {
-        switch(mDirection)
+        switch(mSnake.getDirection())
         {
         case eDirection::Down :
             mCoord.Y +=1;
@@ -100,7 +105,7 @@ void Map::userInput()
             break;
         case eDirection::Up :
             mCoord.Y -=1;
-            mSnake.setMove(eDirection::Down);
+            mSnake.setMove(eDirection::Up);
             if(true == isMove(mCoord))
             {
                 mSnake.move(mCoord);
@@ -110,7 +115,7 @@ void Map::userInput()
             break;
         case eDirection::Right :
             mCoord.X +=1;
-            mSnake.setMove(eDirection::Down);
+            mSnake.setMove(eDirection::Right);
             if(true == isMove(mCoord))
             {
                 mSnake.move(mCoord);
@@ -120,7 +125,7 @@ void Map::userInput()
             break;
         case eDirection::Left :
             mCoord.X -=1;
-            mSnake.setMove(eDirection::Down);
+            mSnake.setMove(eDirection::Left);
             if(true == isMove(mCoord))
             {
                 mSnake.move(mCoord);
@@ -130,6 +135,17 @@ void Map::userInput()
             break;
         }
     }
+}
+
+void Map::sLogic()
+{
+     if(mSnake.getGoord() == mFood.getCoord())
+     {
+         mFood.setCoord();
+         MapArray[mFood.getCoord().Y][mFood.getCoord().X] = nObjects::FOOD;
+
+     }
+
 }
 
 
